@@ -1,42 +1,72 @@
-# glare
+# ⚖️ GLARE – AI 模型对比与仲裁工具
 
-This template should help get you started developing with Vue 3 in Vite.
+**GLARE** 是一个用于并排比较多个 AI 模型响应的 Web 工具。它允许您将不同模型的输出粘贴到并排的卡片中，选择关键片段作为证据，然后生成一个结构化的“仲裁请求”，让另一个 AI（或您自己）判断哪个模型更准确、更有帮助。
 
-## Recommended IDE Setup
+> **为什么需要 GLARE？**  
+> 当您同时向多个 AI 模型（如 ChatGPT、Claude、Gemini 等）提问时，它们的回答可能各有优劣。GLARE 帮助您快速对比这些回答，标记出关键差异，并生成一个客观的仲裁提示，从而辅助您做出最终决策。
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## ✨ 核心功能
 
-## Recommended Browser Setup
+- **并排对比** – 最多同时展示 4 个模型的输出，支持 Markdown 渲染与纯文本编辑。
+- **片段引用** – 在渲染后的文本中选取任意片段，一键保存为“证据”。
+- **仲裁请求生成** – 自动将您的注释与所有引用的片段组合成一个清晰的提示，方便您发送给另一个 AI 进行仲裁。
+- **简洁的 UI** – 采用水平滚动布局，浮动工具栏，以及现代化的 Tailwind CSS 设计。
+- **实时预览** – 在编辑与渲染视图之间快速切换。
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## 🚀 快速开始
 
-## Type Support for `.vue` Imports in TS
+### 环境要求
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- Node.js 20.19.0 或更高版本
+- pnpm 10.28.2（推荐）或 npm / yarn
 
-## Customize configuration
+### 安装与运行
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+```bash
+# 克隆仓库
+git clone https://github.com/your-username/glare.git
+cd glare
 
-## Project Setup
-
-```sh
+# 安装依赖
 pnpm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# 启动开发服务器
 pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
 
-```sh
+开发服务器启动后，在浏览器中打开 [http://localhost:5173](http://localhost:5173) 即可使用。
+
+### 构建生产版本
+
+```bash
 pnpm build
 ```
+
+构建产物位于 `dist/` 目录，可直接部署到任何静态托管服务。
+
+## 📖 使用方法
+
+1. **添加模型卡片** – 点击右上角的 **+** 按钮，最多可添加 4 个卡片。
+2. **输入/粘贴内容** – 在每个卡片的编辑框中粘贴不同 AI 模型的回答（支持 Markdown）。
+3. **切换视图** – 点击卡片顶部的“👀 View”/“✏️ Edit”按钮在编辑与渲染模式间切换。
+4. **选取引用** – 在渲染模式下，用鼠标选中任意文本，浮动工具栏会出现，点击 **Quote** 即可将该片段加入证据列表。
+5. **发起仲裁** – 当证据列表不为空时，点击右上角的 **Arbitrate** 按钮打开仲裁面板。
+6. **添加注释** – 在仲裁面板的左侧输入您的背景说明或评判标准。
+7. **复制提示** – 右侧会自动生成完整的仲裁请求，点击任意位置即可复制到剪贴板，然后可粘贴到您选择的仲裁 AI（如 ChatGPT、Claude 等）中。
+
+## 🛠️ 技术栈
+
+- **框架** – Vue 3 (Composition API)
+- **构建工具** – Vite
+- **样式** – Tailwind CSS v4
+- **状态管理** – Pinia
+- **工具库** – VueUse
+- **图标** – Lucide Vue Next
+- **Markdown 解析** – marked
+- **语言** – TypeScript
+
+## 🤝 贡献
+
+欢迎提交 Issue 或 Pull Request！  
+如果您有新的功能建议、发现了 Bug，或者想改进文档，请随时参与。
