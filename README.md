@@ -1,72 +1,71 @@
-# ⚖️ GLARE – AI 模型对比与仲裁工具
+# ⚖️ GLARE
 
-**GLARE** 是一个用于并排比较多个 AI 模型响应的 Web 工具。它允许您将不同模型的输出粘贴到并排的卡片中，选择关键片段作为证据，然后生成一个结构化的“仲裁请求”，让另一个 AI（或您自己）判断哪个模型更准确、更有帮助。
+> **Side-by-side AI model arbitration & comparison tool.**  
+> Built with **Svelte 5 Runes**, **TypeScript**, and **Tailwind CSS**.
 
-> **为什么需要 GLARE？**  
-> 当您同时向多个 AI 模型（如 ChatGPT、Claude、Gemini 等）提问时，它们的回答可能各有优劣。GLARE 帮助您快速对比这些回答，标记出关键差异，并生成一个客观的仲裁提示，从而辅助您做出最终决策。
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Svelte 5](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte)](https://svelte.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript)](https://www.typescriptlang.org)
 
-## ✨ 核心功能
+---
 
-- **并排对比** – 最多同时展示 4 个模型的输出，支持 Markdown 渲染与纯文本编辑。
-- **片段引用** – 在渲染后的文本中选取任意片段，一键保存为“证据”。
-- **仲裁请求生成** – 自动将您的注释与所有引用的片段组合成一个清晰的提示，方便您发送给另一个 AI 进行仲裁。
-- **简洁的 UI** – 采用水平滚动布局，浮动工具栏，以及现代化的 Tailwind CSS 设计。
-- **实时预览** – 在编辑与渲染视图之间快速切换。
+## 🧐 What is GLARE?
 
-## 🚀 快速开始
+GLARE is a lightweight, client-side utility designed for **Prompt Engineers** and **AI Researchers**. It allows you to paste responses from multiple LLMs (e.g., Claude, GPT-4, Llama), quote specific evidence, and generate a structured **XML arbitration prompt** to feed into a judge model.
 
-### 环境要求
+Stop guessing which model performed better. **Arbitrate with evidence.**
 
-- Node.js 20.19.0 或更高版本
-- pnpm 10.28.2（推荐）或 npm / yarn
+## ✨ Key Features
 
-### 安装与运行
+| Feature | Benefit |
+| :--- | :--- |
+| **🔒 Local Persistence** | Auto-saves sessions to `localStorage`. Refresh safely. |
+| **⚡ Svelte 5 Runes** | Built on the latest reactive primitives for maximum performance. |
+| **📑 XML Prompting** | Generates structured XML prompts for optimal LLM parsing. |
+| **🎨 Auto-Identity** | Models are auto-colored for instant visual differentiation. |
+| **📋 Smart Copy** | One-click copy with visual feedback (no annoying alerts). |
+| **📱 Responsive** | Horizontal snap-scroll works on desktop and tablet. |
+
+## 🛠 Tech Stack
+
+- **Framework:** [Svelte 5](https://svelte.dev) (Runes)
+- **Language:** [TypeScript](https://www.typescriptlang.org) (Strict Mode)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com) + [Typography Plugin](https://tailwindcss.com/docs/typography-plugin)
+- **Icons:** [Lucide Svelte](https://lucide.dev)
+- **Markdown:** [Marked](https://marked.js.org)
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+
+- npm / pnpm / yarn
+
+### Installation
 
 ```bash
-# 克隆仓库
-git clone https://github.com/your-username/glare.git
-cd glare
+# Clone the repository
+git clone https://github.com/yourusername/glare-ai.git
+cd glare-ai
 
-# 安装依赖
-pnpm install
+# Install dependencies
+npm install
 
-# 启动开发服务器
-pnpm dev
+# Start development server
+npm run dev
 ```
 
-
-开发服务器启动后，在浏览器中打开 [http://localhost:5173](http://localhost:5173) 即可使用。
-
-### 构建生产版本
+### Build for Production
 
 ```bash
-pnpm build
+npm run build
+npm run preview
 ```
 
-构建产物位于 `dist/` 目录，可直接部署到任何静态托管服务。
+## 💡 Usage Guide
 
-## 📖 使用方法
-
-1. **添加模型卡片** – 点击右上角的 **+** 按钮，最多可添加 4 个卡片。
-2. **输入/粘贴内容** – 在每个卡片的编辑框中粘贴不同 AI 模型的回答（支持 Markdown）。
-3. **切换视图** – 点击卡片顶部的“👀 View”/“✏️ Edit”按钮在编辑与渲染模式间切换。
-4. **选取引用** – 在渲染模式下，用鼠标选中任意文本，浮动工具栏会出现，点击 **Quote** 即可将该片段加入证据列表。
-5. **发起仲裁** – 当证据列表不为空时，点击右上角的 **Arbitrate** 按钮打开仲裁面板。
-6. **添加注释** – 在仲裁面板的左侧输入您的背景说明或评判标准。
-7. **复制提示** – 右侧会自动生成完整的仲裁请求，点击任意位置即可复制到剪贴板，然后可粘贴到您选择的仲裁 AI（如 ChatGPT、Claude 等）中。
-
-## 🛠️ 技术栈
-
-- **框架** – Vue 3 (Composition API)
-- **构建工具** – Vite
-- **样式** – Tailwind CSS v4
-- **状态管理** – Pinia
-- **工具库** – VueUse
-- **图标** – Lucide Vue Next
-- **Markdown 解析** – marked
-- **语言** – TypeScript
-
-## 🤝 贡献
-
-欢迎提交 Issue 或 Pull Request！  
-如果您有新的功能建议、发现了 Bug，或者想改进文档，请随时参与。
+1.  **Add Models:** Click the `+` button to add up to 4 model columns.
+2.  **Paste Content:** Paste Markdown responses from different AI models into each column.
+3.  **Quote Evidence:** Switch to **View Mode**, highlight text, and click **"Add to Evidence"**.
+4.  **Arbitrate:** Click the **Gavel Icon** to open the arbitration modal.
+5.  **Generate Prompt:** Add your context instructions and copy the generated **XML Prompt**.
+6.  **Judge:** Paste the XML prompt into your preferred LLM to get a verdict.
